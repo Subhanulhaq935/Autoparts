@@ -27,30 +27,18 @@ export default function MKSLogo({ size = 120 }: { size?: number }) {
         strokeWidth="2"
         opacity="0.55"
       />
-      {/* Shabbir Khan text */}
+      {/* MKS text */}
       <text
         x="100"
-        y="80"
+        y="93"
         textAnchor="middle"
         fontFamily="Arial Black, Impact, sans-serif"
         fontWeight="900"
-        fontSize="28"
+        fontSize="56"
         fill="#D4920A"
-        letterSpacing="0"
+        letterSpacing="-2"
       >
-        Shabbir
-      </text>
-      <text
-        x="100"
-        y="108"
-        textAnchor="middle"
-        fontFamily="Arial Black, Impact, sans-serif"
-        fontWeight="900"
-        fontSize="28"
-        fill="#D4920A"
-        letterSpacing="0"
-      >
-        Khan
+        MKS
       </text>
       {/* 3 stars */}
       <text x="54"  y="122" textAnchor="middle" fontFamily="Arial, sans-serif" fontSize="22" fill="#D4920A">★</text>
