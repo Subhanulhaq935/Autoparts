@@ -1,26 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400..700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f8fafc;
+  --foreground: #0f172a;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: 'Outfit', var(--font-geist-sans), ui-sans-serif, system-ui;
   --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #09090b;
+    --foreground: #f4f4f5;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Outfit', var(--font-geist-sans), ui-sans-serif, system-ui;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Urdu Typography */
+.font-urdu {
+  font-family: 'Noto Nastaliq Urdu', Tahoma, Arial, sans-serif;
+  line-height: 2;
+}
+
+/* Gradient Text Utility */
+.gradient-text {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Scrollbars */
+.scrollbar-none::-webkit-scrollbar { display: none; }
+.scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
+
+.scrollbar-thin::-webkit-scrollbar { width: 4px; }
+.scrollbar-thin::-webkit-scrollbar-track { background: transparent; }
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+.dark .scrollbar-thin::-webkit-scrollbar-thumb { background: #334155; }
+
+/* Card hover lift animation */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0);  }
+}
+
+/* Print Overrides */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 12pt;
+    margin: 0;
+    padding: 0;
+  }
+
+  header, main, footer, button, .print\:hidden { display: none !important; }
+
+  .fixed {
+    position: static !important;
+    background: transparent !important;
+    padding: 0 !important;
+    backdrop-filter: none !important;
+  }
+
+  .rounded-2xl {
+    border-radius: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
 }
