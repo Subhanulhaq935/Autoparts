@@ -28,7 +28,8 @@ export const defaultCategories: Category[] = [
   { id: "toyota-hiace-wagon", name: "Toyota Hiace Wagon 84,90 Model", nameUrdu: "ہائی ایس ویگن 84,90 ماڈل" },
   { id: "nissan-urvan", name: "Nissan Urvan Wagon", nameUrdu: "نیسان اربن ویگن" },
   { id: "toyota-hilux-90hs", name: "Toyota Hilux 90-HS Model", nameUrdu: "ہائی لکس 90-HS ماڈل" },
-  { id: "mazda-e2200", name: "Mazda Wagon E2200 Model", nameUrdu: "مزدا ویگن E2200 ماڈل" }
+  { id: "mazda-e2200", name: "Mazda Wagon E2200 Model", nameUrdu: "مزدا ویگن E2200 ماڈل" },
+  { id: "panels-small-cars", name: "Panel Full + Half (Mixed Cars)", nameUrdu: "پینل فل + ہاف" }
 ];
 
 export const defaultProducts: Product[] = [
@@ -828,5 +829,42 @@ export const defaultProducts: Product[] = [
   { id: "me40", code: "40", name: "Front Fish Doubling Mukammal L", nameUrdu: "فرنٹ مچھلی ڈبلنگ فل (L)", price: 1550, category: "mazda-e2200" },
   { id: "me41", code: "41", name: "Front Fish Doubling Half L", nameUrdu: "فرنٹ مچھلی ڈبلنگ ہاف (L)", price: 1300, category: "mazda-e2200" },
   { id: "me42", code: "42", name: "Back Farsh Bara 20G", nameUrdu: "بیک فرش بڑا 20 گ", price: 23000, category: "mazda-e2200" },
-  { id: "me43", code: "43", name: "Front Chhat Piece Mukammal", nameUrdu: "فرنٹ چھت پیس فل", price: 7500, category: "mazda-e2200" }
+  { id: "me43", code: "43", name: "Front Chhat Piece Mukammal", nameUrdu: "فرنٹ چھت پیس فل", price: 7500, category: "mazda-e2200" },
+
+  // Panel Full + Half (Mixed Cars)
+  { id: "pm1_20g",  code: "1",  name: "Panel Mukammal Dai Wale 86/82/76 20G", nameUrdu: "پینل فل ڈائی والے 86,82,76 20 گ",   price: 2900, category: "panels-small-cars" },
+  { id: "pm2_23g",  code: "2",  name: "Panel Half Dai Wale 86/82/76 23G",     nameUrdu: "پینل ہاف ڈائی والے 86,82,76 23 گ", price: 1700, category: "panels-small-cars" },
+  { id: "pm2_20g",  code: "2",  name: "Panel Half Dai Wale 86/82/76 20G",     nameUrdu: "پینل ہاف ڈائی والے 86,82,76 20 گ", price: 2300, category: "panels-small-cars" },
+  { id: "pm3_20g",  code: "3",  name: "Panel Mukammal Dai Wale 96 20G",       nameUrdu: "پینل فل ڈائی والے 96 20 گ",        price: 3500, category: "panels-small-cars" },
+  { id: "pm4_23g",  code: "4",  name: "Panel Half Dai Wale 96 23G",           nameUrdu: "پینل ہاف ڈائی والے 96 23 گ",       price: 2000, category: "panels-small-cars" },
+  { id: "pm4_20g",  code: "4",  name: "Panel Half Dai Wale 96 20G",           nameUrdu: "پینل ہاف ڈائی والے 96 20 گ",       price: 2700, category: "panels-small-cars" },
+  { id: "pm5_20g",  code: "5",  name: "Panel Mukammal Dai Wale 88 20G",       nameUrdu: "پینل فل ڈائی والے 88 20 گ",        price: 3200, category: "panels-small-cars" },
+  { id: "pm6_23g",  code: "6",  name: "Panel Half Dai Wale 88 23G",           nameUrdu: "پینل ہاف ڈائی والے 88 23 گ",       price: 1800, category: "panels-small-cars" },
+  { id: "pm6_20g",  code: "6",  name: "Panel Half Dai Wale 88 20G",           nameUrdu: "پینل ہاف ڈائی والے 88 20 گ",       price: 2400, category: "panels-small-cars" },
+  { id: "pm7_23g",  code: "7",  name: "Panel Half Dai Wale XLI 23G",          nameUrdu: "پینل ہاف ڈائی والے XLI 23 گ",      price: 2300, category: "panels-small-cars" },
+  { id: "pm7_20g",  code: "7",  name: "Panel Half Dai Wale XLI 20G",          nameUrdu: "پینل ہاف ڈائی والے XLI 20 گ",      price: 3000, category: "panels-small-cars" },
+  { id: "pm8_23g",  code: "8",  name: "Panel Half Dai Wale Bangla 23G",       nameUrdu: "پینل ہاف ڈائی والے بنگلہ 23 گ",    price: 1900, category: "panels-small-cars" },
+  { id: "pm8_20g",  code: "8",  name: "Panel Half Dai Wale Bangla 20G",       nameUrdu: "پینل ہاف ڈائی والے بنگلہ 20 گ",    price: 2600, category: "panels-small-cars" },
+  { id: "pm9_23g",  code: "9",  name: "Panel Half Dai Wale Timber 23G",       nameUrdu: "پینل ہاف ڈائی والے ٹمبر 23 گ",     price: 1800, category: "panels-small-cars" },
+  { id: "pm9_20g",  code: "9",  name: "Panel Half Dai Wale Timber 20G",       nameUrdu: "پینل ہاف ڈائی والے ٹمبر 20 گ",     price: 2200, category: "panels-small-cars" },
+  { id: "pm10_23g", code: "10", name: "Panel Half Dai Wale R.A 23G",          nameUrdu: "پینل ہاف ڈائی والے R.A 23 گ",      price: 1900, category: "panels-small-cars" },
+  { id: "pm10_20g", code: "10", name: "Panel Half Dai Wale R.A 20G",          nameUrdu: "پینل ہاف ڈائی والے R.A 20 گ",      price: 2600, category: "panels-small-cars" },
+  { id: "pm11_23g", code: "11", name: "Panel Half Dai Wale Coure 23G",        nameUrdu: "پینل ہاف ڈائی والے کورے 23 گ",     price: 1700, category: "panels-small-cars" },
+  { id: "pm11_20g", code: "11", name: "Panel Half Dai Wale Coure 20G",        nameUrdu: "پینل ہاف ڈائی والے کورے 20 گ",     price: 2200, category: "panels-small-cars" },
+  { id: "pm12_23g", code: "12", name: "Panel Half Dai Wale Mehran 23G",       nameUrdu: "پینل ہاف ڈائی والے مہران 23 گ",    price: 1600, category: "panels-small-cars" },
+  { id: "pm12_20g", code: "12", name: "Panel Half Dai Wale Mehran 20G",       nameUrdu: "پینل ہاف ڈائی والے مہران 20 گ",    price: 2100, category: "panels-small-cars" },
+  { id: "pm13",     code: "13", name: "Panel Mukammal Bameh Golaai Mehran",   nameUrdu: "پینل فل بمعہ گولائی مہران",        price: 2800, category: "panels-small-cars" },
+  { id: "pm14",     code: "14", name: "Panel Dai Wali 86/82",                 nameUrdu: "پینل ڈائی والی 86,82",             price: 2200, category: "panels-small-cars" },
+  { id: "pm15_23g", code: "15", name: "Panel Mukammal Sada Mehran 23G",       nameUrdu: "پینل فل سادہ مہران 23 گ",          price: 2400, category: "panels-small-cars" },
+  { id: "pm15_20g", code: "15", name: "Panel Mukammal Sada Mehran 20G",       nameUrdu: "پینل فل سادہ مہران 20 گ",          price: 2700, category: "panels-small-cars" },
+  { id: "pm16",     code: "16", name: "Panel Mukammal Sada FX 20G",           nameUrdu: "پینل فل سادہ FX 20 گ",             price: 2700, category: "panels-small-cars" },
+  { id: "pm17",     code: "17", name: "Panel Half Sada FX Mehran",            nameUrdu: "پینل ہاف سادہ FX مہران",           price: 1900, category: "panels-small-cars" },
+  { id: "pm18",     code: "18", name: "Panel Half Dai Wale Baleno",           nameUrdu: "پینل ہاف ڈائی والے بلینو",         price: 2600, category: "panels-small-cars" },
+  { id: "pm19",     code: "19", name: "Panel Half Dai Wale Santro",           nameUrdu: "پینل ہاف ڈائی والے سینٹرو",        price: 3200, category: "panels-small-cars" },
+  { id: "pm20",     code: "20", name: "Panel Half Dai Wale 2015 XLI",         nameUrdu: "پینل ہاف ڈائی والے 2015 XLI",      price: 5000, category: "panels-small-cars" },
+  { id: "pm21",     code: "21", name: "Panel Half Dai Wale 2010 XLi",  nameUrdu: "پینل ہاف ڈائی والے 2010 XLi", price: 4500, category: "panels-small-cars" },
+  { id: "pm22",     code: "22", name: "Panel Half Wagnar",                    nameUrdu: "پینل ہاف ویگنار",                  price: 2800, category: "panels-small-cars" },
+  { id: "pm23",     code: "23", name: "Panel Half Honda City 06",             nameUrdu: "پینل ہاف ہونڈا سٹی 06",            price: 3000, category: "panels-small-cars" },
+  { id: "pm24",     code: "24", name: "Panel Half Honda GM",                  nameUrdu: "پینل ہاف ہونڈا GM",                price: 4500, category: "panels-small-cars" },
+  { id: "pm25",     code: "25", name: "Panel Half Honda CF4",                 nameUrdu: "پینل ہاف ہونڈا CF4",               price: 3800, category: "panels-small-cars" }
 ];
