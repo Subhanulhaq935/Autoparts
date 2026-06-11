@@ -184,7 +184,9 @@ export default function Home() {
 
   const handleResetToDefault = () => {
     if (confirm("This will overwrite all price updates and modifications, resetting to default prices. Continue?")) {
-      saveProductsList(defaultProducts);
+      const defaultIds = new Set(defaultProducts.map((p) => p.id));
+      const userAddedProducts = products.filter((p) => !defaultIds.has(p.id));
+      saveProductsList([...defaultProducts, ...userAddedProducts]);
       setCategories(defaultCategories);
       localStorage.setItem("pos_categories", JSON.stringify(defaultCategories));
       setCart([]);
