@@ -36,6 +36,13 @@ export default function Home() {
 
   // Load from local storage and merge any new codebase products/categories
   useEffect(() => {
+    const DATA_VERSION = "v5";
+    if (localStorage.getItem("pos_data_version") !== DATA_VERSION) {
+      localStorage.removeItem("pos_products");
+      localStorage.removeItem("pos_categories");
+      localStorage.setItem("pos_data_version", DATA_VERSION);
+    }
+
     const savedProducts = localStorage.getItem("pos_products");
     const savedCategories = localStorage.getItem("pos_categories");
 
