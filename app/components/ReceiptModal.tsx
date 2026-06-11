@@ -171,7 +171,8 @@ export default function ReceiptModal({
                     <td className="py-2 pr-4">
                       <p className="font-light leading-snug text-zinc-900">{item.product.name}</p>
                       {item.product.nameUrdu && (
-                        <p className="text-right text-[10px] font-bold text-zinc-600 font-urdu" dir="rtl">
+                        <p className="text-right text-xs font-bold text-zinc-900 font-urdu" dir="rtl"
+                          style={{ fontWeight: 700, textShadow: "0 0 0.4px currentColor" }}>
                           {item.product.nameUrdu}
                         </p>
                       )}
