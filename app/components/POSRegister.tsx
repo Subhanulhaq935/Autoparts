@@ -16,7 +16,7 @@ interface POSRegisterProps {
   onRemoveFromCart: (productId: string) => void;
   onUpdateCartQty: (productId: string, qty: number) => void;
   onClearCart: () => void;
-  onCheckout: (discountAmount: number) => void;
+  onCheckout: (discountAmount: number, customerName: string) => void;
 }
 
 export default function POSRegister({
@@ -31,6 +31,7 @@ export default function POSRegister({
 }: POSRegisterProps) {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
+  const [customerName, setCustomerName] = useState("");
   const [discountType, setDiscountType] = useState<"percent" | "fixed">("fixed");
   const [discountInput, setDiscountInput] = useState("");
 
@@ -79,8 +80,9 @@ export default function POSRegister({
 
   const handleCheckoutClick = () => {
     if (cart.length === 0) return;
-    onCheckout(discountAmount);
+    onCheckout(discountAmount, customerName.trim());
     setDiscountInput("");
+    setCustomerName("");
   };
 
   const checkoutLabel = () => {
@@ -394,6 +396,20 @@ export default function POSRegister({
             {/* Payment + Discount section */}
             {cart.length > 0 && (
               <div className="space-y-2.5 rounded-xl bg-slate-50 p-3 dark:bg-zinc-800/50">
+
+                {/* Customer / Company name */}
+                <div>
+                  <p className="mb-1 text-[10px] font-black uppercase tracking-widest text-slate-400 dark:text-zinc-500">
+                    Customer / Company Name
+                  </p>
+                  <input
+                    type="text"
+                    placeholder="Enter name..."
+                    value={customerName}
+                    onChange={(e) => setCustomerName(e.target.value)}
+                    className="block w-full rounded-xl border-2 border-slate-200 bg-white px-3 py-2 text-sm font-bold text-slate-900 transition-colors focus:border-indigo-400 focus:outline-none dark:border-zinc-600 dark:bg-zinc-800 dark:text-white"
+                  />
+                </div>
 
                 {/* Discount row */}
                 <div className="flex items-end gap-2">

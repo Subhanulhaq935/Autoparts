@@ -30,6 +30,7 @@ export default function Home() {
   const [receiptCart, setReceiptCart] = useState<CartItem[]>([]);
   const [receiptTotal, setReceiptTotal] = useState(0);
   const [receiptDiscount, setReceiptDiscount] = useState(0);
+  const [receiptCustomer, setReceiptCustomer] = useState("");
   const [receiptInvoiceNum, setReceiptInvoiceNum] = useState("");
 
   // Load from local storage and merge any new codebase products/categories
@@ -192,7 +193,7 @@ export default function Home() {
   };
 
   // Checkout Handler
-  const handleCheckout = (discountAmount: number) => {
+  const handleCheckout = (discountAmount: number, customerName: string) => {
     const subtotal = cart.reduce((acc, item) => acc + item.product.price * item.quantity, 0);
     const finalTotal = subtotal - discountAmount;
 
@@ -202,6 +203,7 @@ export default function Home() {
     setReceiptCart(cart);
     setReceiptTotal(finalTotal);
     setReceiptDiscount(discountAmount);
+    setReceiptCustomer(customerName);
     setReceiptInvoiceNum(invoiceNum);
     setIsReceiptOpen(true);
 
@@ -319,6 +321,7 @@ export default function Home() {
         cart={receiptCart}
         totalAmount={receiptTotal}
         discountAmount={receiptDiscount}
+        customerName={receiptCustomer}
         invoiceNumber={receiptInvoiceNum}
       />
     </div>

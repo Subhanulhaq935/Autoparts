@@ -15,6 +15,7 @@ interface ReceiptModalProps {
   cart: CartItem[];
   totalAmount: number;
   discountAmount?: number;
+  customerName?: string;
   invoiceNumber: string;
 }
 
@@ -31,6 +32,7 @@ export default function ReceiptModal({
   cart,
   totalAmount,
   discountAmount = 0,
+  customerName = "",
   invoiceNumber,
 }: ReceiptModalProps) {
   const printRef = useRef<HTMLDivElement>(null);
@@ -119,6 +121,12 @@ export default function ReceiptModal({
                 <p>
                   <span className="font-semibold text-zinc-700">Time:</span> {currentTime}
                 </p>
+                {customerName && (
+                  <p className="mt-1 border-t border-zinc-200 pt-1">
+                    <span className="font-semibold text-zinc-700">Customer:</span>{" "}
+                    <span className="font-black text-zinc-900">{customerName}</span>
+                  </p>
+                )}
               </div>
             </div>
           </div>
