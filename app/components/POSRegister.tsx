@@ -16,7 +16,7 @@ interface POSRegisterProps {
   onRemoveFromCart: (productId: string) => void;
   onUpdateCartQty: (productId: string, qty: number) => void;
   onClearCart: () => void;
-  onCheckout: (cashPaid: number, discountAmount: number) => void;
+  onCheckout: (discountAmount: number) => void;
 }
 
 export default function POSRegister({
@@ -31,7 +31,6 @@ export default function POSRegister({
 }: POSRegisterProps) {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
-  const [cashPaidInput, setCashPaidInput] = useState("");
   const [discountType, setDiscountType] = useState<"percent" | "fixed">("fixed");
   const [discountInput, setDiscountInput] = useState("");
 
@@ -73,9 +72,6 @@ export default function POSRegister({
 
   const discountedTotal = totalAmount - discountAmount;
 
-  const parsedCashPaid = parseFloat(cashPaidInput) || 0;
-  const changeDue = Math.max(0, parsedCashPaid - discountedTotal);
-
   const selectedCategoryLabel =
     selectedCategory === "all"
       ? null
@@ -83,20 +79,12 @@ export default function POSRegister({
 
   const handleCheckoutClick = () => {
     if (cart.length === 0) return;
-    if (parsedCashPaid < discountedTotal) {
-      alert("Amount paid is less than the total amount!");
-      return;
-    }
-    onCheckout(parsedCashPaid, discountAmount);
-    setCashPaidInput("");
+    onCheckout(discountAmount);
     setDiscountInput("");
   };
 
   const checkoutLabel = () => {
     if (cart.length === 0) return "Add Items to Checkout";
-    if (parsedCashPaid <= 0) return "Complete Checkout";
-    if (parsedCashPaid < discountedTotal)
-      return `Short by Rs. ${(discountedTotal - parsedCashPaid).toLocaleString()}`;
     return "Complete Checkout →";
   };
 
@@ -447,59 +435,15 @@ export default function POSRegister({
                   </div>
                 </div>
 
-                {/* Cash Received */}
-                <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 dark:text-zinc-500">
-                  Cash Received (Rs.)
-                </p>
-                <input
-                  type="number"
-                  placeholder="Enter amount..."
-                  value={cashPaidInput}
-                  onChange={(e) => setCashPaidInput(e.target.value)}
-                  className="block w-full rounded-xl border-2 border-slate-200 bg-white px-3 py-2.5 text-sm font-black text-slate-900 transition-colors focus:border-indigo-500 focus:outline-none dark:border-zinc-600 dark:bg-zinc-800 dark:text-white"
-                />
-
-                {/* Quick Cash Buttons */}
-                <div className="grid grid-cols-3 gap-1.5">
-                  {[
-                    discountedTotal,
-                    Math.ceil(discountedTotal / 500) * 500,
-                    Math.ceil(discountedTotal / 1000) * 1000,
-                    Math.ceil(discountedTotal / 5000) * 5000,
-                  ]
-                    .filter((val, i, self) => val > 0 && self.indexOf(val) === i)
-                    .slice(0, 3)
-                    .map((amount, idx) => (
-                      <button
-                        key={idx}
-                        onClick={() => setCashPaidInput(amount.toString())}
-                        className="rounded-lg border border-slate-200 bg-white py-1.5 text-[10px] font-black text-slate-600 transition-colors hover:border-indigo-300 hover:text-indigo-600 dark:border-zinc-600 dark:bg-zinc-700 dark:text-zinc-300 dark:hover:border-indigo-500 dark:hover:text-indigo-400"
-                      >
-                        {amount.toLocaleString()}
-                      </button>
-                    ))}
-                </div>
-
-                {/* Change Due */}
-                <div className="flex items-center justify-between rounded-lg border border-slate-200 bg-white px-3 py-2 dark:border-zinc-600 dark:bg-zinc-800">
-                  <span className="text-xs font-bold text-slate-500 dark:text-zinc-400">Change:</span>
-                  <span className={`text-base font-black ${
-                    parsedCashPaid > 0 && changeDue >= 0
-                      ? "text-emerald-600 dark:text-emerald-400"
-                      : "text-slate-300 dark:text-zinc-700"
-                  }`}>
-                    Rs.&nbsp;{changeDue.toLocaleString()}
-                  </span>
-                </div>
               </div>
             )}
 
             {/* Checkout Button */}
             <button
               onClick={handleCheckoutClick}
-              disabled={cart.length === 0 || parsedCashPaid < discountedTotal}
+              disabled={cart.length === 0}
               className={`w-full rounded-xl py-3.5 text-sm font-black tracking-wide transition-all duration-200 ${
-                cart.length > 0 && parsedCashPaid >= discountedTotal
+                cart.length > 0
                   ? "bg-gradient-to-r from-indigo-600 to-violet-600 text-white shadow-lg shadow-indigo-500/30 hover:from-indigo-500 hover:to-violet-500 hover:shadow-indigo-500/40"
                   : "cursor-not-allowed bg-slate-100 text-slate-400 dark:bg-zinc-800 dark:text-zinc-600"
               }`}

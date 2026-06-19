@@ -15,8 +15,6 @@ interface ReceiptModalProps {
   cart: CartItem[];
   totalAmount: number;
   discountAmount?: number;
-  cashPaid: number;
-  changeDue: number;
   invoiceNumber: string;
 }
 
@@ -33,8 +31,6 @@ export default function ReceiptModal({
   cart,
   totalAmount,
   discountAmount = 0,
-  cashPaid,
-  changeDue,
   invoiceNumber,
 }: ReceiptModalProps) {
   const printRef = useRef<HTMLDivElement>(null);
@@ -221,14 +217,6 @@ export default function ReceiptModal({
               <div className="flex justify-between gap-8 border-t-2 border-zinc-900 pt-2 text-base">
                 <span className="font-black text-zinc-900">TOTAL</span>
                 <span className="font-black text-zinc-900">Rs. {totalAmount.toLocaleString()}</span>
-              </div>
-              <div className="flex justify-between gap-8 text-zinc-600">
-                <span className="font-light text-emerald-700">Cash Paid</span>
-                <span className="font-light text-emerald-700">Rs. {cashPaid.toLocaleString()}</span>
-              </div>
-              <div className="flex justify-between gap-8 border-t border-dashed border-zinc-300 pt-1.5 text-zinc-600">
-                <span className="font-light">Change Returned</span>
-                <span className="font-light">Rs. {changeDue.toLocaleString()}</span>
               </div>
             </div>
           </div>

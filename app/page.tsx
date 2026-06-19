@@ -30,8 +30,6 @@ export default function Home() {
   const [receiptCart, setReceiptCart] = useState<CartItem[]>([]);
   const [receiptTotal, setReceiptTotal] = useState(0);
   const [receiptDiscount, setReceiptDiscount] = useState(0);
-  const [receiptPaid, setReceiptPaid] = useState(0);
-  const [receiptChange, setReceiptChange] = useState(0);
   const [receiptInvoiceNum, setReceiptInvoiceNum] = useState("");
 
   // Load from local storage and merge any new codebase products/categories
@@ -194,10 +192,9 @@ export default function Home() {
   };
 
   // Checkout Handler
-  const handleCheckout = (cashPaid: number, discountAmount: number) => {
+  const handleCheckout = (discountAmount: number) => {
     const subtotal = cart.reduce((acc, item) => acc + item.product.price * item.quantity, 0);
     const finalTotal = subtotal - discountAmount;
-    const change = Math.max(0, cashPaid - finalTotal);
 
     const randomNum = Math.floor(100000 + Math.random() * 900000);
     const invoiceNum = `INV-${randomNum}`;
@@ -205,8 +202,6 @@ export default function Home() {
     setReceiptCart(cart);
     setReceiptTotal(finalTotal);
     setReceiptDiscount(discountAmount);
-    setReceiptPaid(cashPaid);
-    setReceiptChange(change);
     setReceiptInvoiceNum(invoiceNum);
     setIsReceiptOpen(true);
 
@@ -324,8 +319,6 @@ export default function Home() {
         cart={receiptCart}
         totalAmount={receiptTotal}
         discountAmount={receiptDiscount}
-        cashPaid={receiptPaid}
-        changeDue={receiptChange}
         invoiceNumber={receiptInvoiceNum}
       />
     </div>
