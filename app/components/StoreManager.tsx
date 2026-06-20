@@ -57,8 +57,9 @@ export default function StoreManager({
 
   const handleAddSubmit = (e: { preventDefault(): void }) => {
     e.preventDefault();
-    if (!newName || !newPrice) return;
-    const parsedPrice = parseInt(newPrice, 10);
+    const cleanPrice = newPrice.replace(/[^0-9]/g, "");
+    if (!newName || !cleanPrice) return;
+    const parsedPrice = parseInt(cleanPrice, 10);
     onAddProduct({
       code: newCode || undefined,
       name: newName,
@@ -390,10 +391,8 @@ export default function StoreManager({
                 </label>
                 <input
                   type="text"
-                  inputMode="numeric"
-                  required
                   value={newPrice}
-                  onChange={(e) => setNewPrice(e.target.value.replace(/[^0-9]/g, ""))}
+                  onChange={(e) => setNewPrice(e.target.value)}
                   placeholder="e.g. 1500"
                   className="block w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-sm text-slate-900 transition-colors focus:border-indigo-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-800 dark:text-white"
                 />
