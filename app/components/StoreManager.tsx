@@ -389,10 +389,11 @@ export default function StoreManager({
                   Price (Rs.) *
                 </label>
                 <input
-                  type="number"
+                  type="text"
+                  inputMode="numeric"
                   required
                   value={newPrice}
-                  onChange={(e) => setNewPrice(e.target.value)}
+                  onChange={(e) => setNewPrice(e.target.value.replace(/[^0-9]/g, ""))}
                   placeholder="e.g. 1500"
                   className="block w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-sm text-slate-900 transition-colors focus:border-indigo-500 focus:outline-none dark:border-zinc-700 dark:bg-zinc-800 dark:text-white"
                 />
