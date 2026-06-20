@@ -182,10 +182,16 @@ export default function Home() {
   };
 
   const handleResetToDefault = () => {
-    if (confirm("This will overwrite all price updates and modifications, resetting to default prices. Continue?")) {
+    if (confirm("This will restore any deleted default products and categories. Your custom names and prices will be kept. Continue?")) {
+      const currentById = new Map(products.map((p) => [p.id, p]));
       const defaultIds = new Set(defaultProducts.map((p) => p.id));
       const userAddedProducts = products.filter((p) => !defaultIds.has(p.id));
-      saveProductsList([...defaultProducts, ...userAddedProducts]);
+      const mergedDefaults = defaultProducts.map((p) => {
+        const existing = currentById.get(p.id);
+        if (!existing) return p;
+        return { ...p, name: existing.name, nameUrdu: existing.nameUrdu, price: existing.price };
+      });
+      saveProductsList([...mergedDefaults, ...userAddedProducts]);
       setCategories(defaultCategories);
       localStorage.setItem("pos_categories", JSON.stringify(defaultCategories));
       setCart([]);
